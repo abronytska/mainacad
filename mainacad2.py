@@ -22,6 +22,13 @@ def read_this(in_phrase):
     print('Longest word is ' + l2[0])
     print('Shortest word is ' + l2[-1])
     # Task #3 - form dict like [a: [word_with_a,word_with_a2...], b:[...] ...]
+    counter = {key: [] for key in string.ascii_lowercase}
+    print(counter)
+    for i in l0:
+        for letter in counter:
+            if letter in i:
+                counter[letter].append(i)
+    print (counter)
 
 
 input_phrase = '''Beautiful is better than ugly.
@@ -45,3 +52,4 @@ If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!'''
 
 read_this(input_phrase)
+
