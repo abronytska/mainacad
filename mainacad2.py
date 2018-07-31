@@ -2,25 +2,25 @@ import string
 
 
 def read_this(in_phrase):
-    l = in_phrase.replace('\n', ' ').split(' ')
+    l0 = in_phrase.replace('\n', ' ').split(' ')
     l1 = []
-    for i in l:
-        i = ''.join(
-            [el for el in list(i) if el not in string.punctuation]).lower() + '\n'
-        if i != '\n':
-            l.append(i)  # fill non sorted with dublicates
-    l1 = list(set(l))
-    l2 = sorted(l1, reverse=True)
-    l1.sort()
+    for i in l0:
+        t = [el for el in list(i) if el not in string.punctuation]
+        t = ''.join(t).lower() + '\n'
+        if t != '\n':
+            l1.append(t)  # fill non sorted with dublicates
+    l0 = list(set(l1))
+    l1 = sorted(l0, reverse=True)
+    l0.sort()
     # Task #1 - create files with sorted in asc/desc way
-    with open('file_asc.txt', 'w') as f1:
+    with open('file_asc.txt', 'w') as f0:
+        f0.writelines(l0)
+    with open('file_desc.txt', 'w') as f1:
         f1.writelines(l1)
-    with open('file_desc.txt', 'w') as f:
-        f.writelines(l2)
     # Task #2 - find the biggest and smallest world
-    l3 = sorted(l1, key=lambda x: len(x))
-    print('Longest word is ' + l3[0])
-    print('Shortest word is ' + l3[-1])
+    l2 = sorted(l0, key=lambda x: len(x))
+    print('Longest word is ' + l2[0])
+    print('Shortest word is ' + l2[-1])
     # Task #3 - form dict like [a: [word_with_a,word_with_a2...], b:[...] ...]
 
 
