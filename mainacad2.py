@@ -31,6 +31,22 @@ def read_this(in_phrase):
     print (counter)
 
 
+# Task #4 - cipher of Caesar with shift = 4
+def caesar_cipher(in_phrase):
+    alphabet = list(string.ascii_lowercase)
+    alphabet.sort()
+    caesar = {}
+    for i in alphabet:
+        caesar[i] = alphabet[(alphabet.index(i) + 4) % 26]
+    # print (caesar)
+    output_phrase = []
+    for i in list(in_phrase.lower()):
+        if i in caesar.keys():
+            output_phrase.append(caesar[i])
+        else:
+            output_phrase.append(i)
+    print(''.join(output_phrase))
+
 input_phrase = '''Beautiful is better than ugly.
 Explicit is better than implicit.
 Simple is better than complex.
@@ -51,5 +67,9 @@ If the implementation is hard to explain, it's a bad idea.
 If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!'''
 
+
 read_this(input_phrase)
+
+
+caesar_cipher(input_phrase)
 
